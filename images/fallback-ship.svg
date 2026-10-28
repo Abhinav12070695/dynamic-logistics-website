@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" preserveAspectRatio="xMidYMid slice">
+  <!-- Local fallback illustration: container ship at sea.
+       Shown automatically when an online photo cannot load. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10243a"/>
+      <stop offset="1" stop-color="#1e3a5f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="480" cy="90" r="34" fill="#f5a623" opacity="0.35"/>
+  <!-- Ship: containers -->
+  <g>
+    <rect x="200" y="196" width="46" height="30" rx="2" fill="#f5a623"/>
+    <rect x="250" y="196" width="46" height="30" rx="2" fill="#ffffff"/>
+    <rect x="300" y="196" width="46" height="30" rx="2" fill="#d98a0b"/>
+    <rect x="350" y="196" width="46" height="30" rx="2" fill="#ffffff"/>
+    <rect x="400" y="196" width="46" height="30" rx="2" fill="#f5a623"/>
+    <rect x="225" y="162" width="46" height="30" rx="2" fill="#ffffff"/>
+    <rect x="275" y="162" width="46" height="30" rx="2" fill="#f5a623"/>
+    <rect x="325" y="162" width="46" height="30" rx="2" fill="#ffffff"/>
+    <rect x="375" y="162" width="46" height="30" rx="2" fill="#d98a0b"/>
+    <!-- Bridge -->
+    <rect x="150" y="150" width="40" height="76" rx="3" fill="#ffffff"/>
+    <rect x="156" y="160" width="28" height="8" fill="#10243a"/>
+    <rect x="164" y="132" width="8" height="18" fill="#ffffff"/>
+    <!-- Hull -->
+    <path d="M120 228 H480 L452 282 H150 Z" fill="#f5a623"/>
+    <rect x="150" y="270" width="302" height="6" fill="#10243a" opacity="0.35"/>
+  </g>
+  <!-- Sea -->
+  <path d="M0 280 Q37.5 266 75 280 T150 280 T225 280 T300 280 T375 280 T450 280 T525 280 T600 280 V400 H0 Z" fill="#d98a0b"/>
+  <path d="M0 312 Q37.5 298 75 312 T150 312 T225 312 T300 312 T375 312 T450 312 T525 312 T600 312 V400 H0 Z" fill="#f5a623" opacity="0.6"/>
+  <path d="M0 348 Q37.5 334 75 348 T150 348 T225 348 T300 348 T375 348 T450 348 T525 348 T600 348 V400 H0 Z" fill="#ffffff" opacity="0.18"/>
+</svg>

@@ -1,0 +1,70 @@
+rules_version = '2';
+
+// =========================================================
+// Dynamic Logistics — Firestore Security Rules
+// Copy ALL of this into: Firebase console > Firestore Database > Rules
+// Replace ADMIN_EMAIL_HERE with the admin email you created in
+// Firebase Authentication (lowercase, keep the quotes), then tap Publish.
+//
+// What these rules allow:
+//  - Anyone visiting the website can CREATE an enquiry, but only
+//    with the expected fields and sensible lengths.
+//  - Only the admin (logged in) can READ, UPDATE or DELETE enquiries.
+//  - Everything else in the database is blocked.
+// The limits here match the checks in js/script.js and the
+// maxlength values in contact.html.
+// =========================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // True only for the logged-in admin account
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == "ADMIN_EMAIL_HERE";
+    }
+
+    // A text field must be a string with a length in range
+    function validText(field, minLen, maxLen) {
+      return request.resource.data[field] is string
+        && request.resource.data[field].size() >= minLen
+        && request.resource.data[field].size() <= maxLen;
+    }
+
+    // "service" is optional; if present it must be one of the dropdown values
+    function validService() {
+      return !('service' in request.resource.data)
+        || request.resource.data.service in
+           ['customs-clearance', 'transportation', 'sea-shipping', 'container-cargo',
+            'logistics-planning', 'cargo-handling', 'other'];
+    }
+
+    match /enquiries/{enquiryId} {
+
+      // Public visitors: create only, with checked data
+      allow create: if request.resource.data.keys().hasOnly(
+                         ['name', 'email', 'phone', 'service', 'subject', 'message', 'status', 'createdAt'])
+                    && validText('name', 2, 100)
+                    && validText('email', 5, 150)
+                    && validText('phone', 10, 25)
+                    && validText('subject', 3, 150)
+                    && validText('message', 10, 2000)
+                    && validService()
+                    && request.resource.data.status == 'new'
+                    && request.resource.data.createdAt == request.time;
+
+      // Admin: view and delete
+      allow read, delete: if isAdmin();
+
+      // Admin: may change only the status field
+      allow update: if isAdmin()
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+                    && request.resource.data.status in ['new', 'in-progress', 'closed'];
+    }
+
+    // Block everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

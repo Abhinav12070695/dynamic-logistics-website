@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2eb">
+  <title>Contact &amp; Request a Quote | Dynamic Logistics</title>
+  <meta name="description" content="Contact Dynamic Logistics in CBD Belapur, Navi Mumbai, for customs clearance and transportation enquiries. Call 9082721955.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="index.html" aria-label="Dynamic Logistics home"><strong>DYNAMIC LOGISTICS</strong><span>Customs · Transport</span></a>
+      <nav class="site-nav" id="mainMenu" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a><a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+      <a class="button header-cta" href="#enquiry">Request a Quote <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-controls="mainMenu" aria-expanded="false" aria-label="Open navigation menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="contact-intro">
+      <div class="container reveal">
+        <span class="eyebrow">Contact Dynamic Logistics</span>
+        <h1>Let's talk about your shipment.</h1>
+        <p>Tell us what you need help with. Contact the owner directly or send a quote enquiry using the form.</p>
+      </div>
+    </section>
+
+    <section class="section section-contact" aria-label="Contact details and quote enquiry">
+      <div class="container contact-layout">
+        <aside class="contact-aside reveal" aria-labelledby="contactInfoTitle">
+          <span class="eyebrow">Direct contact</span>
+          <h2 id="contactInfoTitle">Get in touch.</h2>
+          <p>Speak with Issac Briding about customs clearance or transportation requirements.</p>
+          <div class="contact-detail"><small>Owner</small>Issac Briding</div>
+          <div class="contact-detail"><small>Phone</small><a href="tel:9082721955">9082721955</a></div>
+          <div class="contact-detail"><small>Email</small><a href="mailto:dynamiclogisticsshipping@gmail.com">dynamiclogisticsshipping@gmail.com</a></div>
+          <div class="contact-detail"><small>Office</small>Office No. 407, NBC Complex, Sector 11, Plot No. 43, CBD, Belapur, Navi Mumbai, Maharashtra – 400614</div>
+          <a class="button button-light-outline" href="https://www.google.com/maps/search/?api=1&amp;query=NBC+Complex+Sector+11+CBD+Belapur+Navi+Mumbai+400614" target="_blank" rel="noopener">Open in Google Maps <span aria-hidden="true">↗</span></a>
+        </aside>
+
+        <div class="form-panel reveal" id="enquiry">
+          <span class="eyebrow">Quote enquiry</span>
+          <h2>Send us the details.</h2>
+          <p class="form-panel-intro">Fields marked <span class="required-mark" aria-hidden="true">*</span> are required. Your details are used only to respond to your enquiry.</p>
+
+          <div id="formSuccess" class="alert alert-success d-none" role="status" tabindex="-1">
+            <h3>Enquiry received, <span class="success-name"></span>.</h3>
+            <p>Your enquiry has been saved. We will contact you by phone or email. For urgent shipments, call <a href="tel:9082721955">9082721955</a>.</p>
+          </div>
+          <div id="formDemo" class="alert alert-info d-none" role="status" tabindex="-1">
+            <h3>Online enquiries are not connected yet.</h3>
+            <p>Nothing was sent or saved. Please call <a href="tel:9082721955">9082721955</a> or email <a href="mailto:dynamiclogisticsshipping@gmail.com">dynamiclogisticsshipping@gmail.com</a>. Your details remain in the form.</p>
+          </div>
+          <div id="formError" class="alert alert-danger d-none" role="alert" tabindex="-1">
+            <h3>Your enquiry could not be sent.</h3>
+            <p id="formErrorReason">Please check your internet connection and try again.</p>
+            <p>You can also call <a href="tel:9082721955">9082721955</a> or email <a href="mailto:dynamiclogisticsshipping@gmail.com">dynamiclogisticsshipping@gmail.com</a>. Your typed details remain in the form.</p>
+          </div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name" class="form-label">Full Name <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="text" class="form-control" id="name" name="name" maxlength="100" required placeholder="Your name" autocomplete="name" aria-describedby="nameError">
+                <div class="invalid-feedback" id="nameError">Please enter your full name.</div>
+              </div>
+              <div class="field">
+                <label for="email" class="form-label">Email Address <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" maxlength="150" required placeholder="name@example.com" autocomplete="email" inputmode="email" aria-describedby="emailError">
+                <div class="invalid-feedback" id="emailError">Please enter a valid email address.</div>
+              </div>
+              <div class="field">
+                <label for="phone" class="form-label">Phone Number <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="tel" class="form-control" id="phone" name="phone" maxlength="20" required placeholder="+91 98765 43210" autocomplete="tel" inputmode="tel" aria-describedby="phoneError">
+                <div class="invalid-feedback" id="phoneError">Please enter a valid phone number.</div>
+              </div>
+              <div class="field">
+                <label for="service" class="form-label">Service Needed <span class="optional">(optional)</span></label>
+                <select class="form-select" id="service" name="service">
+                  <option value="">Choose a service</option>
+                  <option value="customs-clearance">Customs Clearance</option>
+                  <option value="transportation">Transportation Services</option>
+                  <option value="sea-shipping">Sea Shipping</option>
+                  <option value="container-cargo">Container Cargo</option>
+                  <option value="logistics-planning">Logistics Planning</option>
+                  <option value="cargo-handling">Cargo Handling</option>
+                  <option value="other">Other / not sure</option>
+                </select>
+              </div>
+              <div class="field field-wide">
+                <label for="subject" class="form-label">Subject <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="text" class="form-control" id="subject" name="subject" maxlength="150" required placeholder="e.g. Customs clearance enquiry" aria-describedby="subjectError">
+                <div class="invalid-feedback" id="subjectError">Please enter a subject.</div>
+              </div>
+              <div class="field field-wide">
+                <label for="message" class="form-label">Message <span class="required-mark" aria-hidden="true">*</span></label>
+                <textarea class="form-control" id="message" name="message" rows="5" maxlength="2000" required placeholder="Tell us about your goods, origin and destination" aria-describedby="messageError messageCount"></textarea>
+                <div class="invalid-feedback" id="messageError">Please enter your message.</div>
+                <div class="char-count" id="messageCount">0 / 2000</div>
+              </div>
+              <div class="hp-field" aria-hidden="true">
+                <label for="dlsTrap">Leave this field empty</label>
+                <input type="text" id="dlsTrap" name="dls_trap" tabindex="-1" autocomplete="off">
+              </div>
+              <div class="field field-wide">
+                <button type="submit" class="button button-dark form-submit" id="submitBtn">Submit Enquiry</button>
+                <p class="form-note">When Firebase is configured, your enquiry is stored in Firestore. This form does not send email.</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-paper" aria-labelledby="mapTitle">
+      <div class="container">
+        <div class="section-intro reveal">
+          <span class="eyebrow">Find us</span>
+          <h2 id="mapTitle">Our office in CBD Belapur.</h2>
+          <p>NBC Complex, Sector 11, CBD Belapur, Navi Mumbai – 400614</p>
+        </div>
+        <div class="map-wrap reveal">
+          <iframe src="https://www.google.com/maps?q=NBC+Complex,+Sector+11,+CBD+Belapur,+Navi+Mumbai,+Maharashtra+400614&amp;output=embed" title="Map showing the Dynamic Logistics office at NBC Complex, CBD Belapur, Navi Mumbai" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><a class="footer-brand" href="index.html">DYNAMIC LOGISTICS<span>Customs · Transport</span></a><p class="footer-about">Customs clearance and transportation support from CBD Belapur, Navi Mumbai.</p></div>
+        <div><h2 class="footer-title">Explore</h2><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><h2 class="footer-title">Services</h2><ul class="footer-links"><li><a href="services.html#customs-clearance">Customs Clearance</a></li><li><a href="services.html#transportation">Transportation Services</a></li><li><a href="#enquiry">Request a quote</a></li></ul></div>
+        <div><h2 class="footer-title">Contact</h2><ul class="footer-links"><li>Issac Briding, Owner</li><li><a href="tel:9082721955">9082721955</a></li><li><a href="mailto:dynamiclogisticsshipping@gmail.com">dynamiclogisticsshipping@gmail.com</a></li><li>Office No. 407, NBC Complex, Sector 11, Plot No. 43, CBD Belapur, Navi Mumbai – 400614</li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year">2026</span> Dynamic Logistics. All rights reserved.</span><a href="admin-login.html">Admin</a></div>
+    </div>
+  </footer>
+  <button type="button" id="backToTop" aria-label="Back to top">↑</button>
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

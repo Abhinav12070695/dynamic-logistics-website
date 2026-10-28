@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Keep admin pages out of Google search results -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#10243a">
+  <title>Admin Dashboard | Dynamic Logistics</title>
+
+  <!-- Inter font (needs internet) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 + icons (need internet) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Our styles: main site first, then admin extras -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/admin.css" rel="stylesheet">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<!-- "checking-login" hides the dashboard until admin.js confirms the login -->
+<body class="admin-body checking-login">
+
+  <!-- ================= TOP BAR ================= -->
+  <nav class="navbar navbar-dark navbar-custom sticky-top" aria-label="Admin">
+    <div class="container">
+      <a class="navbar-brand" href="admin.html">
+        <img src="images/logo.svg" alt="Dynamic ship logo" width="44" height="44">
+        <span class="brand-text">
+          <span class="brand-name">DYNAMIC</span>
+          <span class="brand-tagline">Admin Dashboard</span>
+        </span>
+      </a>
+      <div class="d-flex align-items-center gap-2">
+        <span class="admin-user d-none d-md-inline" id="adminEmail"></span>
+        <button class="btn btn-outline-light btn-sm" id="logoutBtn" type="button">
+          <i class="bi bi-box-arrow-right" aria-hidden="true"></i> Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Shown while checking the login -->
+  <div class="container py-5 text-center" id="authLoading">
+    <div class="spinner-border text-info" role="status"><span class="visually-hidden">Loading</span></div>
+    <p class="mt-3 text-muted">Checking login...</p>
+  </div>
+
+  <main class="admin-main" id="main-content">
+    <div class="container">
+
+      <!-- Problems (setup, permission, connection) are shown here -->
+      <div id="dashboardError" class="alert alert-danger d-none" role="alert"></div>
+
+      <!-- ================= HEADER ================= -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+          <h1 class="h4 mb-0">Customer Enquiries</h1>
+          <p class="text-muted small mb-0">Updates live — new enquiries appear automatically.</p>
+        </div>
+        <a href="index.html" class="btn btn-sm btn-outline-dark" target="_blank" rel="noopener">
+          <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> View website
+        </a>
+      </div>
+
+      <!-- ================= NUMBER CARDS ================= -->
+      <div class="row g-3 mb-3">
+        <div class="col-6 col-md-3">
+          <div class="stat-card stat-total">
+            <div class="stat-number" id="countTotal">0</div>
+            <div class="stat-label">Total</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card stat-new">
+            <div class="stat-number" id="countNew">0</div>
+            <div class="stat-label">New</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card stat-progress">
+            <div class="stat-number" id="countProgress">0</div>
+            <div class="stat-label">In progress</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card stat-closed">
+            <div class="stat-number" id="countClosed">0</div>
+            <div class="stat-label">Closed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= CHARTS (js/admin-charts.js) ================= -->
+      <div class="row g-3 mb-3">
+
+        <!-- Chart 1: enquiries per week / month -->
+        <div class="col-lg-8">
+          <section class="chart-card" aria-labelledby="trendTitle">
+            <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+              <div>
+                <h2 class="chart-title" id="trendTitle">Enquiries received</h2>
+                <p class="chart-subtitle" id="trendSubtitle">Per week, last 8 weeks</p>
+              </div>
+              <div class="btn-group btn-group-sm" role="group" aria-label="Time range">
+                <button type="button" class="btn btn-outline-secondary range-btn active" data-range="weeks" aria-pressed="true">8 weeks</button>
+                <button type="button" class="btn btn-outline-secondary range-btn" data-range="months" aria-pressed="false">6 months</button>
+              </div>
+            </div>
+
+            <p class="chart-headline mb-2">
+              <span id="trendHeadline">0</span>
+              <span class="chart-headline-label" id="trendHeadlineLabel">this week</span>
+            </p>
+
+            <div id="chartMessage" class="alert alert-warning small py-2 d-none" role="status"></div>
+
+            <div class="chart-box">
+              <canvas id="trendChart" role="img" aria-label="Column chart of enquiries received per period. The same numbers are in the table below."></canvas>
+            </div>
+
+            <details class="chart-table mt-2">
+              <summary>View as table</summary>
+              <table class="table table-sm mb-0 mt-2">
+                <thead>
+                  <tr><th id="trendTableHead" scope="col">Week starting</th><th class="text-end" scope="col">Enquiries</th></tr>
+                </thead>
+                <tbody id="trendTableBody"></tbody>
+              </table>
+            </details>
+          </section>
+        </div>
+
+        <!-- Chart 2: status breakdown -->
+        <div class="col-lg-4">
+          <section class="chart-card" aria-labelledby="statusTitle">
+            <h2 class="chart-title" id="statusTitle">Status breakdown</h2>
+            <p class="chart-subtitle mb-3">Share of all enquiries</p>
+            <div class="status-bar is-empty" id="statusBar" role="img" aria-label="No enquiries yet"></div>
+            <ul class="chart-legend" id="statusLegend"></ul>
+            <p class="chart-subtitle mb-0" id="statusSummary"></p>
+          </section>
+        </div>
+      </div>
+
+      <!-- ================= SEARCH + FILTERS ================= -->
+      <div class="admin-toolbar mb-3">
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-search" aria-hidden="true"></i></span>
+          <input type="search" class="form-control" id="searchBox" placeholder="Search name, email, phone, subject..." aria-label="Search enquiries">
+        </div>
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+          <button type="button" class="btn btn-outline-secondary filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="new" aria-pressed="false">New</button>
+          <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="in-progress" aria-pressed="false">In progress</button>
+          <button type="button" class="btn btn-outline-secondary filter-btn" data-filter="closed" aria-pressed="false">Closed</button>
+          <button type="button" class="btn btn-turquoise btn-sm ms-auto" id="exportBtn">
+            <i class="bi bi-download" aria-hidden="true"></i> Export CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= ENQUIRY LIST ================= -->
+      <p class="small text-muted mb-2" id="resultInfo" aria-live="polite"></p>
+      <div id="enquiryList">
+        <div class="empty-state">
+          <div class="spinner-border text-info" role="status"><span class="visually-hidden">Loading</span></div>
+          <p class="mt-3">Loading enquiries...</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= DELETE CONFIRMATION BOX ================= -->
+  <!-- Used instead of the browser's confirm(), which some in-app phone browsers block -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="confirmTitle">Delete enquiry?</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0" id="confirmText"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmYes">
+            <i class="bi bi-trash" aria-hidden="true"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= POP-UP MESSAGES (toasts) ================= -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" id="toastArea" aria-live="polite"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Firebase ("compat" version works with normal script tags) -->
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-compat.js"></script>
+  <!-- Chart.js for the dashboard chart (needs internet) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+  <!-- Our Firebase settings, the charts, then the admin logic -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/admin-charts.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

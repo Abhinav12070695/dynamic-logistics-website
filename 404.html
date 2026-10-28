@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f5f2eb">
+  <title>Page Not Found | Dynamic Logistics</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f5f2eb;
+      color: #202521;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      padding: 24px;
+    }
+    main { width: min(620px, 100%); }
+    .wordmark {
+      margin: 0 0 70px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+    .code {
+      margin: 0 0 12px;
+      color: #b83f12;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(42px, 9vw, 72px);
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+    p { max-width: 480px; color: #626a65; line-height: 1.7; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    a {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 18px;
+      border: 1px solid #202521;
+      color: #202521;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    a.primary { border-color: #e85b24; background: #e85b24; }
+    a:hover { background: #202521; color: #fffefa; }
+    a:focus-visible { outline: 3px solid #e85b24; outline-offset: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="wordmark">DYNAMIC LOGISTICS</p>
+    <p class="code">ERROR · 404</p>
+    <h1>Page not found.</h1>
+    <p>The address may have changed, or the page may no longer be available. Return to the home page or contact Dynamic Logistics directly.</p>
+    <div class="actions">
+      <a class="primary" id="homeLink" href="index.html">Go to home page</a>
+      <a href="tel:9082721955">Call 9082721955</a>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var parts = window.location.pathname.split("/");
+      if (window.location.hostname.indexOf("github.io") !== -1 && parts.length > 2 && parts[1]) {
+        document.getElementById("homeLink").href = "/" + parts[1] + "/index.html";
+      }
+    })();
+  </script>
+</body>
+</html>

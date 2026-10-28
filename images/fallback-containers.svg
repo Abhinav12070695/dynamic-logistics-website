@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" preserveAspectRatio="xMidYMid slice">
+  <!-- Local fallback illustration: stacked containers and a port crane.
+       Shown automatically when an online photo cannot load. -->
+  <rect width="600" height="400" fill="#10243a"/>
+  <!-- Crane -->
+  <g fill="none" stroke="#f5a623" stroke-width="8" stroke-linejoin="round">
+    <path d="M90 360 V70 M150 360 V70 M90 70 H520 M90 140 L150 70 M90 220 L150 140 M90 300 L150 220"/>
+  </g>
+  <line x1="420" y1="70" x2="420" y2="150" stroke="#ffffff" stroke-width="3"/>
+  <rect x="396" y="150" width="48" height="12" fill="#ffffff"/>
+  <!-- Container stack (each container: body + ribs) -->
+  <g>
+    <rect x="200" y="290" width="120" height="60" rx="3" fill="#f5a623"/>
+    <rect x="330" y="290" width="120" height="60" rx="3" fill="#ffffff"/>
+    <rect x="460" y="290" width="120" height="60" rx="3" fill="#d98a0b"/>
+    <rect x="265" y="224" width="120" height="60" rx="3" fill="#ffffff"/>
+    <rect x="395" y="224" width="120" height="60" rx="3" fill="#f5a623"/>
+    <rect x="330" y="158" width="120" height="60" rx="3" fill="#d98a0b"/>
+  </g>
+  <g stroke="#10243a" stroke-width="3" opacity="0.25">
+    <path d="M220 296 V344 M240 296 V344 M260 296 V344 M280 296 V344 M300 296 V344"/>
+    <path d="M350 296 V344 M370 296 V344 M390 296 V344 M410 296 V344 M430 296 V344"/>
+    <path d="M480 296 V344 M500 296 V344 M520 296 V344 M540 296 V344 M560 296 V344"/>
+    <path d="M285 230 V278 M305 230 V278 M325 230 V278 M345 230 V278 M365 230 V278"/>
+    <path d="M415 230 V278 M435 230 V278 M455 230 V278 M475 230 V278 M495 230 V278"/>
+    <path d="M350 164 V212 M370 164 V212 M390 164 V212 M410 164 V212 M430 164 V212"/>
+  </g>
+  <rect y="350" width="600" height="50" fill="#1e3a5f"/>
+</svg>

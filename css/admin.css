@@ -1,0 +1,341 @@
+/* =========================================================
+   Dynamic Logistics — Admin pages
+   File: css/admin.css
+   Loaded AFTER style.css on admin-login.html and admin.html
+   ========================================================= */
+
+/* ---------- Login page ---------- */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background-color: var(--navy);
+  background-image: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 55%, var(--teal) 100%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.login-card .login-logo {
+  width: 72px;
+  height: 72px;
+  display: block;
+  margin: 0 auto 0.75rem;
+}
+
+.password-toggle {
+  border-color: #ced4da;
+  background-color: var(--white);
+  color: var(--muted);
+}
+
+/* ---------- Dashboard layout ---------- */
+.admin-body {
+  --muted: var(--muted-on-grey); /* admin pages sit on light grey: keep secondary text at AA contrast */
+  background-color: var(--light-grey);
+  min-height: 100vh;
+}
+
+/* Hide the dashboard until we know the admin is logged in */
+.admin-body.checking-login .admin-main {
+  display: none;
+}
+
+.admin-user {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.admin-main {
+  padding: 1.5rem 0 3rem;
+}
+
+/* ---------- Stat cards ---------- */
+.stat-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(16, 36, 58, 0.06);
+  border-left: 4px solid var(--turquoise);
+  height: 100%;
+}
+
+.stat-card .stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.stat-card .stat-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stat-card.stat-new      { border-left-color: #e8a317; }
+.stat-card.stat-progress { border-left-color: #3b6ea5; }
+.stat-card.stat-closed   { border-left-color: #2e9e5b; }
+.stat-card.stat-total    { border-left-color: var(--navy); }
+
+/* ---------- Toolbar (search + filters) ---------- */
+.admin-toolbar {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(16, 36, 58, 0.06);
+}
+
+.filter-btn {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 50px;
+}
+
+.filter-btn.active {
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+/* ---------- Enquiry cards ---------- */
+.enquiry-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 1.1rem 1.1rem 1rem;
+  box-shadow: 0 2px 10px rgba(16, 36, 58, 0.06);
+  margin-bottom: 1rem;
+  border-left: 4px solid #e8a317;
+  animation: fadeUp 0.35s ease both;
+}
+
+.enquiry-card.status-in-progress { border-left-color: #3b6ea5; }
+.enquiry-card.status-closed      { border-left-color: #2e9e5b; }
+
+/* Cards slide in only on first load, not on every live update */
+.no-animate .enquiry-card {
+  animation: none;
+}
+
+/* Small tag showing the service the visitor chose */
+.service-chip {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  background-color: #eef3f9;
+  color: var(--teal);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.enquiry-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+  word-break: break-word;
+}
+
+.enquiry-date {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.enquiry-subject {
+  font-weight: 600;
+  margin: 0.6rem 0 0.3rem;
+  word-break: break-word;
+}
+
+.enquiry-message {
+  white-space: pre-wrap;   /* keep the visitor's line breaks */
+  word-break: break-word;
+  color: var(--text);
+  background-color: var(--light-grey);
+  border-radius: 8px;
+  padding: 0.7rem 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.enquiry-contact a {
+  text-decoration: none;
+  word-break: break-all;
+  font-size: 0.9rem;
+}
+
+.status-badge {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.35em 0.7em;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.status-badge.badge-new         { background-color: #fff3d6; color: #8a5a00; }
+.status-badge.badge-in-progress { background-color: #e3ecf6; color: #1e3a5f; }
+.status-badge.badge-closed      { background-color: #dff3e6; color: #1e6b3d; }
+
+.enquiry-actions .form-select {
+  max-width: 170px;
+  font-size: 0.9rem;
+}
+
+.enquiry-actions .btn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- Charts (js/admin-charts.js) ---------- */
+.chart-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 1rem 1rem 0.9rem;
+  box-shadow: 0 2px 10px rgba(16, 36, 58, 0.06);
+  height: 100%;
+}
+
+.chart-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.chart-subtitle {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+/* Big number above the column chart */
+.chart-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.chart-headline #trendHeadline {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.chart-headline-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Fixed height so Chart.js knows how tall to draw */
+.chart-box {
+  position: relative;
+  height: 220px;
+}
+
+.range-btn.active {
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.chart-table summary {
+  color: var(--teal);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Status bar: one row split into coloured parts with 2px white gaps */
+.status-bar {
+  display: flex;
+  gap: 2px;
+  height: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.status-bar.is-empty {
+  background-color: #e9edf1;
+}
+
+.status-segment {
+  flex-basis: 0;
+  min-width: 6px;
+}
+
+.chart-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0.6rem;
+}
+
+.chart-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #eef1f4;
+}
+
+.chart-legend li:last-child {
+  border-bottom: none;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-name {
+  color: var(--text);
+}
+
+.legend-value {
+  margin-left: auto;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Empty / loading states ---------- */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+}
+
+.empty-state .bi {
+  font-size: 2.5rem;
+  color: var(--turquoise);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 575.98px) {
+  .stat-card .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .enquiry-actions .form-select {
+    max-width: none;
+    flex: 1;
+  }
+}
+
+/* Charts never wider than their box (stopped sideways scrolling on 320px phones) */
+.admin-body canvas {
+  max-width: 100% !important;
+}

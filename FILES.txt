@@ -1,0 +1,45 @@
+DYNAMIC LOGISTICS AND SHIPPING — COMPLETE FILE LIST
+Final version: Phase 1 + Phase 2 combined, with enhancements and bug fixes.
+24 files: 11 in the main folder, plus css/ (2), js/ (4) and images/ (7). If any file below is missing, the project is incomplete.
+
+dynamic-logistics/
+  index.html                  Home page
+  about.html                  About Us page
+  services.html               Services page ("Enquire about..." links)
+  contact.html                Contact Us page: details, enquiry form, office map
+  admin-login.html            Admin login (Firebase Authentication)
+  admin.html                  Admin dashboard: enquiries, charts, export
+  404.html                    "Page not found" page (used by GitHub Pages)
+  manifest.json               App name + icon for "Add to Home screen"
+  firestore.rules             Firebase security rules (paste into Firebase console)
+  README.md                   Complete guide: setup, Firebase, full code, tests, viva notes
+  FILES.txt                   This list
+
+  css/
+    style.css                 All website styles + animations
+    admin.css                 Extra styles for the two admin pages
+
+  js/
+    firebase-config.js        Firebase settings  <-- the only file you must edit (README Part 5F)
+    script.js                 Website: menu, animations, image fallback, contact form
+    admin.js                  Admin: login, dashboard, export, pop-up messages
+    admin-charts.js           Admin: the two dashboard charts
+
+  images/
+    logo.svg                  Ship logo (menu, footer, favicon)
+    app-icon.svg              Square app icon (source drawing)
+    icon-192.png              App icon, small
+    icon-512.png              App icon, large
+    fallback-ship.svg         Shown if an online ship photo can't load
+    fallback-containers.svg   Shown if an online container/port photo can't load
+    fallback-warehouse.svg    Shown if an online warehouse photo can't load
+
+Checks passed before packaging:
+  - W3C validator (validator.w3.org engine): all HTML pages, CSS and SVG files — no errors
+  - HTML checker (html-validate), JavaScript linter (ESLint) and syntax check — no errors
+  - Accessibility checker (axe) on all 6 pages, phone and desktop — no issues
+  - Every link to a local file, image and script exists
+  - Browser tests of every page, the contact form, admin login, dashboard and charts — all passed
+
+Needs internet when viewing: Bootstrap, Bootstrap Icons, online photos, Firebase, Chart.js, Google Map.
+Works without Firebase set up: the website runs fully; the form says online enquiries aren't connected yet.
